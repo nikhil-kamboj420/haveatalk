@@ -1,3 +1,4 @@
+import { json } from "express";
 import { upsertStreamUser } from "../lib/stream.js";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
@@ -122,4 +123,71 @@ export const handleLogin = async (req, res) => {
 export const handleLogout = async (req, res) => {
   res.clearCookie("jwt");
   res.status(200).json({ success: true, message: "Logged out successfully" });
+};
+
+//!  handleOnboard function *//
+export const handleOnboard = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { fullName, bio, nativeLanguage, learningLanguage, location } =
+      req.body;
+
+    //*check if user fill all fields or not *//
+    if (
+      !fullName ||
+      !bio ||
+      !nativeLanguage ||
+      !learningLanguage ||
+      !location
+    ) {
+      return res.status(400).json({
+        message: "All fields are required",
+        missingFields: [
+          !fullName && "fullName",
+          !bio && "bio",
+          !nativeLanguage && "nativeLanguage",
+          !learningLanguage && "learningLanguage",
+          !location && "location",
+        ].filter(Boolean),
+      });
+    }
+
+    // *update user details in database*//
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        ...req.body,
+        isOnboarded: true,
+      },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+  // ! update user details in stream*//
+    try {
+      await upsertStreamUser({
+        id: updatedUser._id.toString(),
+        name: updatedUser.fullName,
+        image: updatedUser.profilePic || "",
+      });
+      console.log(
+        `stream user updated after onboarding for ${updatedUser.fullName}`
+      );
+    } catch (streamError) {
+      console.log(
+        "Error updating stream user during onboarding",
+        streamError.message
+      );
+    }
+    // *send onboarded user details to client*//
+    res.status(200).json({
+      success: true,
+      message: "Onboarded successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.log("Error in onboard controller", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
 };
