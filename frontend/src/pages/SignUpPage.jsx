@@ -1,8 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router";
-import { signup } from "../lib/api";
-import toast from "react-hot-toast";
+import useSignup from "../hooks/useSignup";
 
 const SignUpPage = () => {
   const [signupData, setSignupData] = useState({
@@ -11,28 +9,17 @@ const SignUpPage = () => {
     password: "",
   });
 
-  const queryClient = useQueryClient();
-  const { mutate: signupMutation, isPending } = useMutation({
-    mutationFn: signup,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["authUser"] });
-      toast.success("You are signup successfully !");
-    },
-    onError: (err) => {
-      const message = err.response?.data?.message || "Something went wrong";
-      toast.error(message);
-    },
-  });
+  //* using a custom hook for signupMutation
+  const { isPending, signupMutation } = useSignup();
 
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log(signupData);
     signupMutation(signupData);
   };
 
   return (
     <div id="signUpWrapper">
-      <div className="mainContainer">
+      <div className="signUpMainContainer">
         <div className="left">
           <div className="brand ">
             <h1 className="text-7xl">
@@ -41,7 +28,7 @@ const SignUpPage = () => {
             <h2>Create an Account</h2>
             <p>Join Haveatalk and start your language Chatterverse!</p>
           </div>
-          <div className="form-container">
+          <div className="signUpForm-container">
             <form onSubmit={handleSignup}>
               {/* Full Name */}
               <div>
@@ -93,7 +80,7 @@ const SignUpPage = () => {
 
               {/* Submit Button */}
               <button type="submit" className="btn btn-outline btn-primary">
-                {isPending ? "Signing..." : "Create Account"}
+                {isPending ? "Signing up..." : "Create Account"}
               </button>
             </form>
           </div>
