@@ -1,15 +1,19 @@
 import { Link, useLocation } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import useLogout from "../hooks/useLogout";
+import { ThemeSelector } from "./ThemeSelector";
+import { useThemeStore } from "../store/useThemeStore.js";
 
 const Navbar = () => {
   const { authUser } = useAuthUser();
-
   const location = useLocation();
   const currentPath = location.pathname;
   const isChatPage = currentPath.startsWith("/chat");
-
   const { logoutMutation } = useLogout();
+  const { showThemeSelector, setShowThemeSelector } = useThemeStore();
+  const handleTheme = () => {
+    setShowThemeSelector(!showThemeSelector);
+  };
   return (
     <nav
       id="navbarwrapper"
@@ -27,10 +31,12 @@ const Navbar = () => {
         {/* notification link */}
         <Link to={"/notification"}>🔔</Link>
         {/* theme link */}
-        {/* // !onClick={showTheme}  */}
-        <Link>
-          <button>🎨</button>
-        </Link>
+        <div>
+          <button className="cursor-pointer" onClick={() => handleTheme()}>
+            🎨
+          </button>
+          {showThemeSelector && <ThemeSelector />}
+        </div>
         {/* profile link */}
         <Link to={"/onboarding"}>
           <img
