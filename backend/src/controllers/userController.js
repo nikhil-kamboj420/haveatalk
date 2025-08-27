@@ -60,8 +60,8 @@ export const sendFriendRequest = async (req, res) => {
     // *  check if a req  already exists  *//
     const existingRequest = await FriendRequest.findOne({
       $or: [
-        { sender: myld, recipient: recipientId },
-        { sender: recipientId, recipient: myld },
+        { sender: myId, recipient: recipientId },
+        { sender: recipientId, recipient: myId },
       ],
     });
 
@@ -84,7 +84,7 @@ export const sendFriendRequest = async (req, res) => {
     });
   } catch (error) {
     console.log(" Error in sendFriendRequest  controller", error.message);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error  "});
   }
 };
 
