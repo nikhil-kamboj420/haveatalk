@@ -92,7 +92,7 @@ export const sendFriendRequest = async (req, res) => {
 export const acceptFriendRequest = async (req, res) => {
   try {
     const { id: requestId } = req.params;
-    const friendRequest = await friendRequest.findById(requestId);
+    const friendRequest = await FriendRequest.findById(requestId);
 
     // *  check if friend request exists  *//
     if (!friendRequest) {
@@ -130,7 +130,7 @@ export const acceptFriendRequest = async (req, res) => {
 //? ===========defining getFriendRequest func()=============  *//
 export const getFriendRequest = async (req, res) => {
   try {
-    // *  get all friend requests for the current user  *//
+    // *  get all incoming friend requests for the current user  *//
     const incomingReqs = await FriendRequest.find({
       recipient: req.user.id,
       status: "pending",
@@ -138,12 +138,16 @@ export const getFriendRequest = async (req, res) => {
       "sender",
       "fullName profilePic nativeLanguage learningLanguage"
     );
-    // *  get all friend requests sent by the current user  *//
-    const acceptedReqs = await FriendRequest.find({
-      recipient: req.user.id,
-      status: "accepted",
-    }).populate("recipient", "fullName profilePic ");
 
+    // *  get all requests that current user has accepted (so sender will get notified) *//
+const acceptedReqs = await FriendRequest.find({
+  $or: [
+    { recipient: req.user.id, status: "accepted" },
+    { sender: req.user.id, status: "accepted" },
+  ],
+})
+  .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
+  .populate("recipient", "fullName profilePic nativeLanguage learningLanguage");
     // *  return friend requests  *//
     res.status(200).json({ incomingReqs, acceptedReqs });
   } catch (error) {
