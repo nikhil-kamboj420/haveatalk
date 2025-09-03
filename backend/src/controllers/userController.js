@@ -26,7 +26,7 @@ export const getMyFriends = async (req, res) => {
       .select("friends")
       .populate(
         "friends",
-        "fullName profilePic nativeLanguage learningLanguage"
+        "fullName profilePic bio nativeLanguage learningLanguage"
       );
     res.status(200).json(user.friends);
   } catch (error) {
@@ -40,24 +40,26 @@ export const sendFriendRequest = async (req, res) => {
   try {
     const myId = req.user.id;
     const { id: recipientId } = req.params;
+
     // *  prevent sending req to yourself  *//
     if (myId === recipientId) {
       return res
         .status(400)
         .json({ message: "You can't send a friend request to yourself" });
     }
-    // *  check if recipient is exist in db  *//
 
+    // *  check if recipient exists in db  *//
     const recipient = await User.findById(recipientId);
     if (!recipient) {
       return res.status(404).json({ message: "User not found" });
     }
+
     // *  check if recipient is already in my friends list  *//
     if (recipient.friends.includes(myId)) {
       return res.status(400).json({ message: "You are already friends" });
     }
 
-    // *  check if a req  already exists  *//
+    // *  check if a req already exists between sender and recipient  *//
     const existingRequest = await FriendRequest.findOne({
       $or: [
         { sender: myId, recipient: recipientId },
@@ -65,28 +67,42 @@ export const sendFriendRequest = async (req, res) => {
       ],
     });
 
-    if (existingRequest) {
+    // *  if a request exists and is still pending or accepted, block it  *//
+    if (existingRequest && existingRequest.status !== "declined") {
       return res
         .status(400)
-        .json({ message: " Friend request already exists" });
+        .json({ message: "Friend request already exists" });
     }
 
-    // *  create a new friend request  *//
-    const friendRequest = await FriendRequest.create({
-      sender: myId,
-      recipient: recipientId,
-    });
+    // *  if declined request exists, reset it properly (sender/recipient + status)  *//
+    let friendRequest;
+    if (existingRequest && existingRequest.status === "declined") {
+      existingRequest.sender = myId;       
+      existingRequest.recipient = recipientId;
+      existingRequest.status = "pending";
+      await existingRequest.save();
+      friendRequest = existingRequest;
+    } else {
+      // *  otherwise create a new friend request  *//
+      friendRequest = await FriendRequest.create({
+        sender: myId,
+        recipient: recipientId,
+        status: "pending", 
+      });
+    }
 
+    // *  response after sending request  *//
     res.status(200).json({
       success: true,
       message: "Friend request sent successfully",
       friendRequest,
     });
   } catch (error) {
-    console.log(" Error in sendFriendRequest  controller", error.message);
-    res.status(500).json({ message: "Internal server error  "});
+    console.log("Error in sendFriendRequest controller:", error.message);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 //? ===========defining acceptFriendRequest func()=============  *//
 export const acceptFriendRequest = async (req, res) => {
@@ -130,7 +146,7 @@ export const acceptFriendRequest = async (req, res) => {
 //? ===========defining getFriendRequest func()=============  *//
 export const getFriendRequest = async (req, res) => {
   try {
-    // *  get all incoming friend requests for the current user  *//
+    // * get all incoming friend requests for the current user (pending only) *//
     const incomingReqs = await FriendRequest.find({
       recipient: req.user.id,
       status: "pending",
@@ -139,17 +155,34 @@ export const getFriendRequest = async (req, res) => {
       "fullName profilePic nativeLanguage learningLanguage"
     );
 
-    // *  get all requests that current user has accepted (so sender will get notified) *//
-const acceptedReqs = await FriendRequest.find({
-  $or: [
-    { recipient: req.user.id, status: "accepted" },
-    { sender: req.user.id, status: "accepted" },
-  ],
-})
-  .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
-  .populate("recipient", "fullName profilePic nativeLanguage learningLanguage");
-    // *  return friend requests  *//
-    res.status(200).json({ incomingReqs, acceptedReqs });
+    // * get all requests that current user has accepted (so sender will get notified) *//
+    const acceptedReqs = await FriendRequest.find({
+      $or: [
+        { recipient: req.user.id, status: "accepted" },
+        { sender: req.user.id, status: "accepted" },
+      ],
+    })
+      .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
+      .populate(
+        "recipient",
+        "fullName profilePic nativeLanguage learningLanguage"
+      );
+
+    // * get all requests that current user has rejected (so sender will also get notified) *//
+    const rejectedReqs = await FriendRequest.find({
+      $or: [
+        { recipient: req.user.id, status: "declined" },
+        { sender: req.user.id, status: "declined" },
+      ],
+    })
+      .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
+      .populate(
+        "recipient",
+        "fullName profilePic nativeLanguage learningLanguage"
+      );
+
+    // * return friend requests (pending, accepted, declined) *//
+    res.status(200).json({ incomingReqs, acceptedReqs, rejectedReqs });
   } catch (error) {
     console.log("Error in getFriendRequest controller", error.message);
     res.status(500).json({ message: "Internal server error" });
@@ -179,16 +212,25 @@ export const getOutgoingFriendReqs = async (req, res) => {
 //? ===========defining rejectFriendRequest func()=============  *//
 export const rejectFriendRequest = async (req, res) => {
   try {
-    const friendReqId = req.params.id;
+    const { id: friendReqId } = req.params;
+
     const friendReq = await FriendRequest.findById(friendReqId);
     if (!friendReq) {
       return res.status(404).json({ message: "Friend request not found" });
     }
-    friendReq.status = "rejected";
+    friendReq.status = "declined";
     await friendReq.save();
-    res.status(200).json({ success: true, message: "Friend request rejected" }); 
+
+    res.status(200).json({
+      success: true,
+      message: "Friend request rejected ",
+      friendReq,
+    });
   } catch (error) {
     console.error("Error in rejectFriendRequest controller:", error.message);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
