@@ -1,21 +1,19 @@
-import Navbar from "./Navbar"
-import Sidebar from "./Sidebar"
+import { useState } from "react";
+import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
 
+const Layout = ({ children }) => {
+  const [showSidebar, setShowSidebar] = useState(false);
 
-const Layout = ({children,showSidebar =false}) => {
   return (
-    <div>
-        <div>
-            {showSidebar && <Sidebar/>}
-        </div>
-        <div>
-           <Navbar/>
-           <main>
-            {children}
-           </main>
-        </div>
+    <div className="relative min-h-screen flex">
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <div className="flex-1 flex flex-col">
+        <Navbar setShowSidebar={setShowSidebar} />
+        <main>{children}</main>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
