@@ -1,8 +1,11 @@
 export const ChatLoader = () => {
   return (
-        <div className=" max-w-screen h-[93vh] grid place-content-center    text-7xl ">
-      <p>
-        <span className="spinner"></span> {"       "}Connecting to Chat ...
+    <div className="max-w-screen h-[100vh] bg-[url('/bg-pattarn.png')] bg-cover bg-center grid place-content-center">
+      <p className="text-4xl md:text-9xl text-white font-extrabold font-[organical] flex items-center gap-4">
+        <span
+          className="w-20 h-20 border-4 mx-5 border-white border-t-[#0e0918] rounded-full inline-block animate-[spin_1s_linear_infinite]"
+        ></span>
+        Connecting to Chat ...
       </p>
     </div>
   );
