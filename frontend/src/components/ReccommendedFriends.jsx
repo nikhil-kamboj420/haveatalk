@@ -9,15 +9,22 @@ export const ReccommendedFriends = ({
   isPending,
 }) => {
   return (
-    <div id="Rec-friend-wrapper">
-      {/* ReccommendedFriends-title */}
-      <div className="rec-title min-h-[15vh]">
-        <h2 className="text-5xl">Meet New People</h2>
-        <p className="text-2xl">Discover the people with the same interest!</p>
+    <div
+      id="Rec-friend-wrapper"
+      className="min-h-[40vh] px-4 md:px-10 py-8 max-w-[80vw]   mx-auto  bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]"
+    >
+      {/* Title */}
+      <div className="rec-title text-center mb-8">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-[#6742bc] bg-clip-text text-transparent font-[dragrace]">
+          Meet New People
+        </h2>
+        <p className="text-base md:text-lg text-gray-400 mt-2">
+          Discover people with the same interests!
+        </p>
       </div>
-      {/* friend-list-container */}
 
-      <div className="rec-friend-list-container grid grid-cols-2 gap-12">
+      {/* Friend List */}
+      <div className="rec-friend-list-container">
         {loadRecUsers ? (
           <PageLoader />
         ) : (
