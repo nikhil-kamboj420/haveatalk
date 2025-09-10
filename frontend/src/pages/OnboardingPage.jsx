@@ -3,6 +3,7 @@ import useAuthUser from "../hooks/useAuthUser";
 import toast from "react-hot-toast";
 import { LANGUAGES } from "../constants/rowData.js";
 import useOboarding from "../hooks/useOboarding.jsx";
+import { Link } from "react-router";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
@@ -37,6 +38,16 @@ const OnboardingPage = () => {
         id="onBoardWrapper"
         className="w-screen h-screen grid place-content-center   bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)] px-4"
       >
+        <div className="absolute top-1">
+          <Link
+            to="/"
+            type="button"
+            className="w-[4vw] px-6   rounded-lg bg-white hover:bg-[#e12afb] transition    sm: text-2xl xl:text-2xl lg:text-lg "
+            title="go back"
+          >
+            🔙
+          </Link>
+        </div>
         <div className="onBoardMainContainer w-full max-w-[90vw] border-2 border-b-fuchsia-500 md:max-w-[80vw] min-h-[70vh] flex flex-col md:flex-row gap-8  rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
           {/* Profile Section */}
           <div className="profileContainer flex flex-col justify-center items-center gap-6 md:w-1/2">
