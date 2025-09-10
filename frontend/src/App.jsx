@@ -10,18 +10,18 @@ import { Toaster } from "react-hot-toast";
 import PageLoader from "./components/PageLoader";
 import useAuthUser from "./hooks/useAuthUser";
 import Layout from "./components/Layout";
-import { useThemeStore } from "./store/useThemeStore";
 import FriendsPage from "./pages/FriendsPage";
+import { FriendRequestProvider } from "./contexts/FriendRequestContext";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
-  const { theme } = useThemeStore();
   if (isLoading) return <PageLoader />;
   return (
-    <div data-theme={theme}>
-      <Routes>
+    <FriendRequestProvider>
+      <div>
+        <Routes>
         {/* Home  */}
         <Route
           path="/"
@@ -131,10 +131,11 @@ const App = () => {
           path="*"
           element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />}
         />
-      </Routes>
+        </Routes>
 
-      <Toaster />
-    </div>
+        <Toaster />
+      </div>
+    </FriendRequestProvider>
   );
 };
 
