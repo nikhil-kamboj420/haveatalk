@@ -35,7 +35,12 @@ export const RecFriendCard = ({
                 {user.fullName}
               </h3>
               <p className="text-sm md:text-base text-gray-400">
-                📍 {user.location}
+                <img
+                  src="/location-icon.png"
+                  alt="location icon"
+                  className="w-10 h-10 inline-block"
+                />{" "}
+                {user.location}
               </p>
             </div>
 
