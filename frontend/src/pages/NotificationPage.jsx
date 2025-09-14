@@ -6,6 +6,7 @@ import PageLoader from "../components/PageLoader";
 import { toast } from "react-hot-toast";
 import useAuthUser from "../hooks/useAuthUser";
 import { useFriendRequests } from "../contexts/FriendRequestContext";
+import { capitalize } from "../lib/utils";
 
 const NotificationPage = () => {
   const { authUser } = useAuthUser();
@@ -45,7 +46,7 @@ const NotificationPage = () => {
   return (
     <>
       <title>Notification | HaveaTalk</title>
-      <link rel="icon" href="/notification-fav-icon.png" />
+      <link rel="icon" href="/notification-fav-icon.webp" />
       <div className="min-h-screen  lg:mt-[10vh]  xl:mt-[10vh]  max-w-screen  bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]">
         <div
           id="notificationwrapper"
@@ -79,11 +80,11 @@ const NotificationPage = () => {
                         <img
                           className="w-14 h-14 rounded-full border-2 border-fuchsia-500 shadow-md"
                           src={request?.sender.profilePic}
-                          alt={request?.sender.fullName}
+                          alt={capitalize(request?.sender.userName)}
                         />
                         <div>
                           <h3 className="text-xl font-extrabold">
-                            {request?.sender.fullName}
+                            {capitalize(request?.sender.userName)}
                           </h3>
                           <div className="flex flex-col sm:flex-row gap-2 mt-2">
                             <button className="px-3 py-1 rounded-lg bg-[#6742bc] text-white text-sm shadow-inner">
@@ -148,17 +149,17 @@ const NotificationPage = () => {
                     <div className="flex items-center gap-4">
                       <img
                         src={friend?.profilePic}
-                        alt={friend?.fullName}
+                        alt={capitalize(friend?.userName)}
                         className="w-12 h-12 rounded-full border-2 border-fuchsia-500 shadow-md"
                       />
                       <div>
                         <h3 className="text-xl font-extrabold">
-                          {friend?.fullName}
+                          {capitalize(friend?.userName)}
                         </h3>
                         <p className="text-gray-400">
                           {isSender
-                            ? `${friend?.fullName} accepted your friend request`
-                            : `You accepted ${friend?.fullName}'s friend request`}
+                            ? `${capitalize(friend?.userName)} accepted your friend request`
+                            : `You accepted ${capitalize(friend?.userName)}'s friend request`}
                         </p>
                         <p className="text-sm text-gray-500">🕛 Recently</p>
                       </div>
@@ -192,17 +193,17 @@ const NotificationPage = () => {
                     <div className="flex items-center gap-4">
                       <img
                         src={friend.profilePic}
-                        alt={friend.fullName}
+                        alt={capitalize(friend.userName)}
                         className="w-12 h-12 rounded-full border-2 border-fuchsia-500 shadow-md"
                       />
                       <div>
                         <h3 className="text-xl font-extrabold">
-                          {friend.fullName}
+                          {capitalize(friend.userName)}
                         </h3>
                         <p className="text-gray-400">
                           {isSender
-                            ? `${friend.fullName} rejected your friend request`
-                            : `You rejected ${friend.fullName}'s friend request`}
+                            ? `${capitalize(friend.userName)} rejected your friend request`
+                            : `You rejected ${capitalize(friend.userName)}'s friend request`}
                         </p>
                         <p className="text-sm text-gray-500">🕛 Recently</p>
                       </div>

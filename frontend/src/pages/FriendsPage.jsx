@@ -51,7 +51,7 @@ const FriendsPage = () => {
     <>
       {" "}
       <title>Friends | HaveaTalk</title>
-      <link rel="icon" href="/friends-fav-icon.png" />
+      <link rel="icon" href="/friends-fav-icon.webp" />
       <div className="home-page min-h-screen  max-w-screen bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]  m-auto ">
         <Friends loadFriends={loadFriends} friends={friends} />
         <ReccommendedFriends

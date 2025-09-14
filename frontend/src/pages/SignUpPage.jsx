@@ -4,7 +4,7 @@ import useSignup from "../hooks/useSignup";
 
 const SignUpPage = () => {
   const [signupData, setSignupData] = useState({
-    fullName: "",
+    userName: "",
     email: "",
     password: "",
   });
@@ -19,7 +19,7 @@ const SignUpPage = () => {
   return (
     <>
       <title>Signup | HaveaTalk</title>
-      <link rel="icon" href="/signup-fav-icon.jpg" />
+      <link rel="icon" href="/signup-fav-icon.webp" />
 
       <div className="gradient-magic relative grid min-h-screen w-full place-content-center text-white">
         {/* Background */}
@@ -36,7 +36,7 @@ const SignUpPage = () => {
           <div className="flex flex-col justify-start   flex-1 w-full">
             <div className="brand text-center md:text-left">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 className="mx-auto md:mx-0  max-w-[15rem] md:max-w-[20rem]"
                 alt="logo"
               />
@@ -51,17 +51,17 @@ const SignUpPage = () => {
             {/* Form */}
             <div className="signUpForm-container mt-6 w-full">
               <form onSubmit={handleSignup} className="flex flex-col gap-5">
-                {/* Full Name */}
+                {/* Username  */}
                 <div>
                   <label className="block text-2xl md:text-2xl mb-1">
-                    Full Name
+                     Username <span className="text-green-300">:hint- Nikhil Kamboj_420</span>
                   </label>
                   <input
                     type="text"
-                    name="fullName"
+                    name="userName"
                     placeholder="Enter your full name"
                     onChange={(e) =>
-                      setSignupData({ ...signupData, fullName: e.target.value })
+                      setSignupData({ ...signupData, userName: e.target.value })
                     }
                     className="w-full rounded-md border border-white bg-transparent px-3 py-4 text-2xl md:text-2xl focus:outline-none focus:border-fuchsia-500"
                   />
@@ -140,7 +140,7 @@ const SignUpPage = () => {
           <div className="flex flex-col items-center md:items-start justify-center flex-1 w-full  md:mt-0">
             <div className="img-container-signup">
               <img
-                src="./Conversation-cuate1.png"
+                src="./Conversation-cuate1.webp"
                 alt="Conversation image"
                 className="h-auto max-w-[60vw]  md:max-w-[20vw] mx-auto"
               />

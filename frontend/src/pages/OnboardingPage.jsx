@@ -4,11 +4,12 @@ import toast from "react-hot-toast";
 import { LANGUAGES } from "../constants/rowData.js";
 import useOboarding from "../hooks/useOboarding.jsx";
 import { Link } from "react-router";
+import { capitalize } from "../lib/utils.js";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
   const [formState, setFormState] = useState({
-    fullName: authUser?.fullName || "",
+    userName: authUser?.userName || "",
     bio: authUser?.bio || "",
     nativeLanguage: authUser?.nativeLanguage || "",
     learningLanguage: authUser?.learningLanguage || "",
@@ -33,7 +34,7 @@ const OnboardingPage = () => {
   return (
     <>
       <title>OnBoard | HaveaTalk</title>
-      <link rel="icon" href="/onboard-fav-icon.jpg" />
+      <link rel="icon" href="/onboard-fav-icon.webp" />
       <div
         id="onBoardWrapper"
         className="w-screen h-screen grid place-content-center   bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)] px-4"
@@ -65,7 +66,7 @@ const OnboardingPage = () => {
                 />
               ) : (
                 <div className="flex items-center justify-center w-full h-full text-4xl sm:text-5xl text-[#e12afb]">
-                  <img src="/camera-img.png" alt="camera image" />
+                  <img src="/camera-img.webp" alt="camera image" />
                 </div>
               )}
             </div>
@@ -79,7 +80,7 @@ const OnboardingPage = () => {
                 Generate Random Avatar
               </button>
               <img
-                src="/magic-stick-icon.png"
+                src="/magic-stick-icon.webp"
                 alt="magic stick icon"
                 className=" px-6  h-10 relative  right-10"
               />
@@ -95,18 +96,18 @@ const OnboardingPage = () => {
               {/* Full Name */}
               <div className="flex flex-col">
                 <label
-                  htmlFor="fullName"
+                  htmlFor="userName"
                   className=" text-2xl xl:text-2xl sm:text-lg lg:text-xl font-[mori] tracking-[0.2rem] mb-1"
                 >
                   Full Name
                 </label>
                 <input
-                  id="fullName"
+                  id="userName"
                   type="text"
-                  value={formState.fullName}
+                  value={capitalize(formState.userName)}
                   placeholder="Enter your full name"
                   onChange={(e) =>
-                    setFormState({ ...formState, fullName: e.target.value })
+                    setFormState({ ...formState, userName: e.target.value })
                   }
                   className="px-3 sm:px-4 py-2 sm:py-3  text-2xl xl:text-2xl sm:text-lg lg:text-xl font-[mori] tracking-[0.2rem] border-2 border-b-fuchsia-500 bg-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-[#e12afb]"
                 />
@@ -207,7 +208,7 @@ const OnboardingPage = () => {
                 >
                   Location{" "}
                   <img
-                    src="/location-icon.png"
+                    src="/location-icon.webp"
                     alt="location icon"
                     className="w-10 h-10 inline-block"
                   />

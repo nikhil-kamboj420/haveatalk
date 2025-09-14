@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <>
       <title>Login | HaveaTalk</title>
-      <link rel="icon" href="/login-fav-icon.jpg" />
+      <link rel="icon" href="/login-fav-icon.webp" />
 
       <div className="gradient-magic relative grid min-h-screen  w-full place-content-center text-white">
         {/* Background iframe */}
@@ -34,12 +34,12 @@ const LoginPage = () => {
         <div className="relative z-50 flex items-center justify-center md:justify-start mt-3.5  text-3xl md:text-5xl font-bold mb-6 md:mb-8">
           <h1>Login</h1>
           <img
-            src="/login-lock-icon.png"
+            src="/login-lock-icon.webp"
             alt="lock icon"
             className="w-15 h-15"
           />
           <img
-            src="/login-key-icon.png"
+            src="/login-key-icon.webp"
             alt="key icon"
             className="w-15 h-10 relative right-13"
           />
@@ -53,7 +53,7 @@ const LoginPage = () => {
             <div className="brand text-center md:text-left">
               <div className="text-4xl md:text-7xl font-extrabold flex justify-center md:justify-start items-center gap-2">
                 <img
-                  src="/logo.png"
+                  src="/logo.webp"
                   className="mx-auto md:mx-0 max-w-[15rem] md:max-w-[20rem]"
                   alt="logo"
                 />
@@ -130,7 +130,7 @@ const LoginPage = () => {
           <div className="flex flex-col items-center md:items-start justify-start flex-1 w-full  md:mt-0">
             <div className="img-container-login">
               <img
-                src="./Conversation-cuate1.png"
+                src="./Conversation-cuate1.webp"
                 alt="Conversation image"
                 className="h-auto max-w-[60vw] md:max-w-[20vw] mx-auto"
               />

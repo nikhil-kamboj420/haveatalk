@@ -16,7 +16,7 @@ const HomePage = () => {
   return (
     <>
       <title>Home | HaveaTalk</title>
-      <link className="rounded-full" rel="icon" href="/home-fav-icon.png" />
+      <link className="rounded-full" rel="icon" href="/home-fav-icon.webp" />
       {loading ? <PageLoader /> : <Hero />}
     </>
   );
