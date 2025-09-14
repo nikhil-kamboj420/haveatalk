@@ -25,11 +25,11 @@ const generateAndSendToken = (userid, res) => {
 
 // ! handleSignup function  *//
 export const handleSignup = async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { userName, email, password } = req.body;
 
   //* check if any field is missing  by user *//
   try {
-    if (!fullName || !email || !password) {
+    if (!userName || !email || !password) {
       return res.status(400).json({ message: "Please fill all fields" });
     }
 
@@ -46,6 +46,13 @@ export const handleSignup = async (req, res) => {
       return res.status(400).json({ message: "Invalid email format" });
     }
 
+    // * check  if  the user Full name  is already exist in the database *//
+    const existingUserName = await User.findOne({ userName });
+    if (existingUserName) {
+      return res
+        .status(400)
+        .json({ message: "User Name is already taken,try different!" });
+    }
     // * check  if  the user is already exist in the database *//
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -61,7 +68,7 @@ export const handleSignup = async (req, res) => {
     // * creating new user || seting user data  into database  *//
     const newUser = await User.create({
       email,
-      fullName,
+      userName,
       password,
       profilePic: randomAvatar,
     });
@@ -70,10 +77,10 @@ export const handleSignup = async (req, res) => {
     try {
       await upsertStreamUser({
         id: newUser._id.toString(),
-        name: newUser.fullName,
+        name: newUser.userName,
         image: newUser.profilePic || "",
       });
-      console.log(`Stream user created for  ${newUser.fullName}`);
+      console.log(`Stream user created for  ${newUser.userName}`);
     } catch (error) {
       console.error("Error creating Steam user :", error);
     }
@@ -85,7 +92,7 @@ export const handleSignup = async (req, res) => {
     res.status(201).json({ success: true, user: newUser });
   } catch (error) {
     console.log("Error in login controller", error.message);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error"});
   }
 };
 
@@ -128,12 +135,12 @@ export const handleLogout = async (req, res) => {
 export const handleOnboard = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { fullName, bio, nativeLanguage, learningLanguage, location } =
+    const { userName, bio, nativeLanguage, learningLanguage, location } =
       req.body;
 
     //*check if user fill all fields or not *//
     if (
-      !fullName ||
+      !userName ||
       !bio ||
       !nativeLanguage ||
       !learningLanguage ||
@@ -142,7 +149,7 @@ export const handleOnboard = async (req, res) => {
       return res.status(400).json({
         message: "All fields are required",
         missingFields: [
-          !fullName && "fullName",
+          !userName && "userName",
           !bio && "bio",
           !nativeLanguage && "nativeLanguage",
           !learningLanguage && "learningLanguage",
@@ -167,11 +174,11 @@ export const handleOnboard = async (req, res) => {
     try {
       await upsertStreamUser({
         id: updatedUser._id.toString(),
-        name: updatedUser.fullName,
+        name: updatedUser.userName,
         image: updatedUser.profilePic || "",
       });
       console.log(
-        `stream user updated after onboarding for ${updatedUser.fullName}`
+        `stream user updated after onboarding for ${updatedUser.userName}`
       );
     } catch (streamError) {
       console.log(

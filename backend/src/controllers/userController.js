@@ -26,7 +26,7 @@ export const getMyFriends = async (req, res) => {
       .select("friends")
       .populate(
         "friends",
-        "fullName profilePic bio nativeLanguage learningLanguage"
+        "userName profilePic bio nativeLanguage learningLanguage"
       );
     res.status(200).json(user.friends);
   } catch (error) {
@@ -152,7 +152,7 @@ export const getFriendRequest = async (req, res) => {
       status: "pending",
     }).populate(
       "sender",
-      "fullName profilePic nativeLanguage learningLanguage"
+      "userName profilePic nativeLanguage learningLanguage"
     );
 
     // * get all requests that current user has accepted (so sender will get notified) *//
@@ -162,10 +162,10 @@ export const getFriendRequest = async (req, res) => {
         { sender: req.user.id, status: "accepted" },
       ],
     })
-      .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
+      .populate("sender", "userName profilePic nativeLanguage learningLanguage")
       .populate(
         "recipient",
-        "fullName profilePic nativeLanguage learningLanguage"
+        "userName profilePic nativeLanguage learningLanguage"
       );
 
     // * get all requests that current user has rejected (so sender will also get notified) *//
@@ -175,10 +175,10 @@ export const getFriendRequest = async (req, res) => {
         { sender: req.user.id, status: "declined" },
       ],
     })
-      .populate("sender", "fullName profilePic nativeLanguage learningLanguage")
+      .populate("sender", "userName profilePic nativeLanguage learningLanguage")
       .populate(
         "recipient",
-        "fullName profilePic nativeLanguage learningLanguage"
+        "userName profilePic nativeLanguage learningLanguage"
       );
 
     // * return friend requests (pending, accepted, declined) *//
@@ -199,7 +199,7 @@ export const getOutgoingFriendReqs = async (req, res) => {
       status: "pending",
     }).populate(
       "recipient",
-      "fullName profilePic nativeLanguage learningLanguage"
+      "userName profilePic nativeLanguage learningLanguage"
     );
     // *  return friend requests  *//
     res.status(200).json(outgoingReqs);
