@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        kabisat: ["Kabisat", "serif"],
         organical: ["Organical" || "mori"],
         dragrace: ["Dragrace" || "mori"],
       },
