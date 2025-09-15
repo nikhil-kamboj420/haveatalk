@@ -1,9 +1,12 @@
-
 function CallButton({ handleVideoCall }) {
   return (
-    <div className=" flex items-center justify-end  mx-auto w-full absolute top-7">
-      <button onClick={handleVideoCall} className="btn btn-success btn-sm text-white">
-        <img src="https://cdn-icons-png.flaticon.com/512/3735/3735311.png" alt="video call icon"  className="w-20 h-20" />
+    <div className=" flex items-center justify-end  mx-auto  absolute top-7 right-5">
+      <button onClick={handleVideoCall}>
+        <img
+          src="/call-icon.webp"
+          alt="video call icon"
+          className="w-15 h-12 rounded-full bg-gradient-to-r from-[#6743b2] to-[rgb(14,9,24)]"
+        />
       </button>
     </div>
   );
