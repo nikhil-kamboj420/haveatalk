@@ -16,7 +16,7 @@ export default function RobotFeatureCard() {
     <div className="flex justify-between  xl:max-w-[50vw]  relative">
       {/* robot image */}
       <img
-        src="/chatbot-img2.png"
+        src="/chatbot-img2.webp"
         alt="HaveaTalk robot mascot"
         className="w-[30vw]   right-44 relative xl:right-[10vw]  h-[30vh] sm:w-52 sm:h-52 md:w-[30vw] md:h-[30vh] lg:w-[40vw] lg:h-[40vh] xl:w-[50vw] xl:h-[50vh] object-contain"
       />
@@ -65,7 +65,7 @@ export default function RobotFeatureCard() {
             fontWeight="600"
             fill="#5b3aa5"
           >
-            • Real-time chat   • Secure auth
+            • Real-time chat • Secure auth
           </text>
           <text
             x="55"
@@ -75,7 +75,7 @@ export default function RobotFeatureCard() {
             fontWeight="600"
             fill="#5b3aa5"
           >
-            • Fast performance   • Multi-device sync
+            • Fast performance • Multi-device sync
           </text>
         </g>
       </svg>

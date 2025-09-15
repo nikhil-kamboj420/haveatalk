@@ -32,11 +32,11 @@ export const RecFriendCard = ({
                 className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-fuchsia-500 shadow-md"
               />
               <h3 className="text-xl font-extrabold text-white">
-                {user.fullName}
+                {capitalize(user.userName)}
               </h3>
               <p className="text-sm md:text-base text-gray-400">
                 <img
-                  src="/location-icon.png"
+                  src="/location-icon.webp"
                   alt="location icon"
                   className="w-10 h-10 inline-block"
                 />{" "}
@@ -82,7 +82,7 @@ export const RecFriendCard = ({
               {!hasReqBeenSent ? (
                 <>
                   <img
-                    src="/send-fre-req-icon.png"
+                    src="/send-fre-req-icon.webp"
                     alt="friend request"
                     className="w-6 h-6"
                   />
