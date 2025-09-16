@@ -42,7 +42,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
       {/* Sidebar */}
       <aside
         className={`text-2xl font-[dragrace] tracking-[.1rem] fixed top-[11vh] left-0 z-[70] h-[89vh] w-[20rem] font-light
-        bg-[url('/bg-pattarn.png')] bg-cover bg-center
+        bg-[url('/bg-common.webp')] bg-cover bg-center
         text-white flex flex-col justify-between shadow-lg
         transform transition-transform duration-300 ease-in-out
         ${showSidebar ? "translate-x-0" : "-translate-x-full"}`}
@@ -67,7 +67,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                   : "hover:bg-white/10"
               }`}
             >
-              <img src="/home-icon.png" alt="home" className="w-13 h-12" />
+              <img src="/home-icon.webp" alt="home" className="w-13 h-12" />
               <span>Home</span>
             </Link>
 
@@ -81,7 +81,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
               }`}
             >
               <img
-                src="/friends-icon.png"
+                src="/friends-icon.webp"
                 alt="friends"
                 className="w-14 h-10"
               />
@@ -97,7 +97,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                   : "hover:bg-white/10"
               }`}
             >
-              <img src="/bell-icon.png" alt="bell" className="w-10 h-10" />
+              <img src="/bell-icon.webp" alt="bell" className="w-10 h-10" />
               <span>Notifications</span>
             </Link>
           </nav>
@@ -113,8 +113,10 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
             />
           </div>
           <div>
-            <h2 className="font-semibold">{authUser?.fullName}</h2>
-            <span className="text-green-300 text-sm">🟢 online</span>
+            <h2 className="font-semibold">{authUser?.userName}</h2>
+            <span className="text-green-300 text-xl font-[mori]">
+              🟢 online
+            </span>
           </div>
         </div>
       </aside>
