@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { getFlagUrlByLang } from "../lib/utils";
+import { capitalize, getFlagUrlByLang } from "../lib/utils";
 
 export const FriendCard = ({ friends }) => {
   if (!friends || friends.length === 0) {
@@ -25,7 +25,7 @@ export const FriendCard = ({ friends }) => {
               className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-fuchsia-500 shadow-md"
             />
             <h3 className="text-xl font-extrabold text-white">
-              {friend.fullName}
+              {capitalize(friend.userName)}
             </h3>
             <p className="text-xl text-gray-400 line-clamp-2">{friend.bio}</p>
           </div>

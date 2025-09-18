@@ -88,7 +88,7 @@ const ChatPage = () => {
     <>
       <title>Chat | HaveaTalk</title>
       <link rel="icon" href="/chat-fav-icon.webp" />
-      <div className="top-10 h-[100vh] overflow-y-hidden  max-w-screen  bg-[url('/bg-pattarn.webp')] bg-cover bg-center">
+      <div className="top-10 h-[100vh] overflow-y-hidden  max-w-screen  bg-[url('/bg-common.webp')] bg-cover bg-center">
         <div className=" relative top-[5vh] md:top-[10vh] max-w-[100vw] lg:max-w-[80vw]  m-auto ">
           <Chat client={chatClient}>
             <Channel channel={channel}>

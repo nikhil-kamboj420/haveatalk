@@ -1,31 +1,64 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function RobotFeatureCard() {
   const bubbleRef = useRef(null);
+  const robotRef = useRef(null);
 
   useEffect(() => {
+    // Robot image scroll animation
+    gsap.fromTo(
+      robotRef.current,
+      { opacity: 0, x: 120 },
+      {
+        opacity: 1,
+        x: 0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: robotRef.current,
+          start: "top 90%",
+          end: "bottom 70%",
+          scrub: 1,
+        },
+      }
+    );
+
+    // Bubble scroll animation
     gsap.fromTo(
       bubbleRef.current,
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.7)" }
+      { scale: 0.7, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: bubbleRef.current,
+          start: "top 85%",
+          end: "bottom 60%",
+          scrub: 1, // scrub effect
+        },
+      }
     );
   }, []);
 
   return (
-    <div className="flex justify-between  xl:max-w-[50vw]  relative">
+    <div className="flex justify-between xl:max-w-[50vw] relative">
       {/* robot image */}
       <img
+        ref={robotRef}
         src="/chatbot-img2.webp"
         alt="HaveaTalk robot mascot"
-        className="w-[30vw]   right-44 relative xl:right-[10vw]  h-[30vh] sm:w-52 sm:h-52 md:w-[30vw] md:h-[30vh] lg:w-[40vw] lg:h-[40vh] xl:w-[50vw] xl:h-[50vh] object-contain"
+        className="w-[30vw] right-44 relative xl:right-[10vw] h-[30vh] sm:w-52 sm:h-52 md:w-[30vw] md:h-[30vh] lg:w-[40vw] lg:h-[40vh] xl:w-[50vw] xl:h-[50vh] object-contain"
       />
 
       {/* speech bubble */}
       <svg
         ref={bubbleRef}
         viewBox="0 0 340 180"
-        className="xl:w-[20vw]  absolute w-[30rem]  bottom-34 -right-55   h-auto xl:left-[20vw] drop-shadow-[0_0_20px_rgba(0,0,0,0.45)]"
+        className="xl:w-[20vw] absolute w-[30rem] bottom-34 -right-55 h-auto xl:left-[20vw] drop-shadow-[0_0_20px_rgba(0,0,0,0.45)]"
       >
         <defs>
           <linearGradient id="bubbleStroke" x1="0" x2="1">

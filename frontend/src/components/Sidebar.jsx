@@ -1,8 +1,24 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import useAuthUser from "../hooks/useAuthUser";
 import { useEffect } from "react";
+import gsap from "gsap";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
+  useEffect(() => {
+    gsap.fromTo(
+      ".shake-btn",
+      { y: -5, opacity: 0 },
+      {
+        opacity: 1,
+        y: 5,
+        duration: 0.6,
+        ease: "back.out(1.5)",
+        repeat: -1,
+        yoyo: true,
+      }
+    );
+  }, []);
+
   const { authUser } = useAuthUser();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -23,7 +39,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
     <>
       {/* Toggle Button */}
       <button
-        className={`fixed top-[1.5vh] left-[20vw] z-[80] ${top_Menu}  w-fit rounded-md border border-fuchsia-500 px-6 py-3 text-lg md:text-xl font-semibold hover:bg-fuchsia-500 hover:text-black transition text-white`}
+        className={` shake-btn fixed top-[1.5vh] left-[20vw] z-[80] ${top_Menu}  w-fit rounded-md border border-fuchsia-500 px-6 py-3 text-lg md:text-xl font-semibold hover:bg-fuchsia-500 hover:text-black transition text-white`}
         aria-label="Open sidebar"
         aria-expanded={showSidebar}
         onClick={() => setShowSidebar(!showSidebar)}
@@ -49,7 +65,8 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
       >
         {/* Close Button */}
         <button
-          className="absolute top-3 right-3 text-2xl p-2 rounded-full hover:bg-white/10"
+          title="close"
+          className="shake-btn absolute top-3 right-3 text-2xl p-2 rounded-full hover:bg-white/10"
           onClick={() => setShowSidebar(false)}
         >
           ⪻

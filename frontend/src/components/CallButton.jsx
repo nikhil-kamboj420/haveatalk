@@ -1,6 +1,6 @@
 function CallButton({ handleVideoCall }) {
   return (
-    <div className=" flex items-center justify-end  mx-auto  absolute top-7 right-5">
+    <div className=" flex items-center justify-end  mx-auto  absolute top-3 right-5">
       <button onClick={handleVideoCall}>
         <img
           src="/call-icon.webp"
