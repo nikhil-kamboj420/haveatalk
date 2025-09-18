@@ -7,6 +7,15 @@
   }
 }
 
+:root {
+  --bg-primary: linear-gradient(
+    130deg,
+    rgb(14, 9, 24) 0%,
+    #6742bc 50%,
+    rgb(14, 9, 24) 100%
+  );
+}
+
 @font-face {
   font-family: "Organical";
   src: url("/fonts/Organical.ttf") format("truetype");
@@ -102,11 +111,11 @@ html {
 /* *************************************************************************** */
 
 .str-chat__channel-header {
-  background: linear-gradient(90deg, #6743b2, rgb(14, 9, 24));
+  background: var(--bg-primary);
 }
 
 .str-chat__channel {
-  background: linear-gradient(90deg, rgb(14, 9, 24), #6743b2);
+  background: linear-gradient(90deg, rgb(14, 9, 24), #0e0d0d);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +157,12 @@ html {
   }
 }
 .str-chat__list {
-  background: linear-gradient(90deg, rgb(14, 9, 24), #6743b2);
+  background: linear-gradient(
+    130deg,
+    rgb(14, 9, 24) 0%,
+    #552f9fc9 50%,
+    rgb(14, 9, 24) 100%
+  );
   padding: 1.2rem;
 }
 
@@ -161,7 +175,7 @@ html {
 }
 
 .str-chat__attachment-selector .str-chat__attachment-selector__menu-button {
-  background: linear-gradient(90deg, rgb(14, 9, 24), #6743b2);
+  background: var(--bg-primary);
   height: 3.5rem;
   width: 3.5rem;
   border-radius: 5rem;
@@ -178,7 +192,7 @@ html {
   font-weight: 700;
 }
 .str-chat__message-input {
-  background: linear-gradient(90deg, #6743b2, rgb(14, 9, 24));
+  background: var(--bg-primary);
   border-top: 1px solid #ddd;
   padding: 2rem 10rem;
 }
@@ -188,12 +202,17 @@ html {
   }
 }
 
+.str-chat__attachment-selector
+  .str-chat__attachment-selector__menu-button
+  .str-chat__attachment-selector__menu-button__icon {
+  background: #d2cece !important;
+}
 .str-chat__message-input .str-chat__send-button svg {
   width: 3.5rem;
   height: 3.5rem;
-  background: linear-gradient(90deg, #6743b2, rgb(14, 9, 24));
   border-radius: 5rem;
   padding: 0.5rem;
+  background: var(--bg-primary) !important;
 }
 
 /* *********************************************** */
@@ -212,7 +231,7 @@ html {
   font-size: 1.5rem;
   font-weight: 500;
   color: #fff;
-  background: linear-gradient(180deg, #6742bc, rgb(14, 9, 24));
+  background: var(--bg-primary);
   border-radius: 2rem;
   margin: 0.2rem 0.1rem;
   a {
@@ -351,16 +370,15 @@ html {
 
 /* Scrollbar Thumb (handle) */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    130deg,
-    rgb(14, 9, 24) 0%,
-    rgb(14, 9, 24) 90%,
-    #6742bc 100%
-  );
+  background: var(--bg-primary);
   border-radius: 10px;
 }
 
 /* On hover effect */
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(130deg, #6742bc 0%, rgb(14, 9, 24) 100%);
+  background: var(--bg-primary);
+}
+
+.blender {
+  border-bottom: 2px dashed #1e41d9;
 }
