@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import PageLoader from "../components/PageLoader";
+import FeatureSection from "../components/FeatureSection";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,14 @@ const HomePage = () => {
     <>
       <title>Home | HaveaTalk</title>
       <link className="rounded-full" rel="icon" href="/home-fav-icon.webp" />
-      {loading ? <PageLoader /> : <Hero />}
+      {loading ? (
+        <PageLoader />
+      ) : (
+        <>
+          <Hero /> <FeatureSection />
+          <Footer />
+        </>
+      )}
     </>
   );
 };
