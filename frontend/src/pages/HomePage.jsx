@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import PageLoader from "../components/PageLoader";
 import FeatureSection from "../components/FeatureSection";
 import Footer from "../components/Footer";
+import ChatBot from "../components/ChatBot";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ const HomePage = () => {
       ) : (
         <>
           <Hero /> <FeatureSection />
-          <Footer />
+          <Footer /> <ChatBot/>
         </>
       )}
     </>
