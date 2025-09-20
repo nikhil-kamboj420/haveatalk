@@ -98,7 +98,7 @@ const OnboardingPage = () => {
                   htmlFor="userName"
                   className=" text-2xl xl:text-2xl sm:text-lg lg:text-xl font-[mori] tracking-[0.2rem] mb-1"
                 >
-                  Full Name
+                  User_Name
                 </label>
                 <input
                   id="userName"
