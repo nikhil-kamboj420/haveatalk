@@ -50,7 +50,7 @@ const LoginPage = () => {
           {/* Left Side */}
           <div className="flex flex-col justify-start gap-6 md:gap-8 flex-1 w-full">
             {/* Branding */}
-            <div className="brand text-center md:text-left">
+            <div className=" text-center md:text-left">
               <div className="text-4xl md:text-7xl font-extrabold flex justify-center md:justify-start items-center gap-2">
                 <img
                   src="/logo.webp"
@@ -67,7 +67,7 @@ const LoginPage = () => {
             </div>
 
             {/* Form */}
-            <div className="loginForm-container mt-6 w-full">
+            <div className="mt-6 w-full">
               <form
                 onSubmit={handleLogin}
                 className="flex flex-col gap-5 md:gap-6"
@@ -128,14 +128,14 @@ const LoginPage = () => {
 
           {/* Right Side */}
           <div className="flex flex-col items-center md:items-start justify-start flex-1 w-full  md:mt-0">
-            <div className="img-container-login">
+            <div>
               <img
                 src="./Conversation-cuate1.webp"
                 alt="Conversation image"
                 className="h-auto max-w-[60vw] md:max-w-[20vw] mx-auto"
               />
             </div>
-            <div className="ordinary-text mt-6 text-center md:text-left">
+            <div className="mt-6 text-center md:text-left">
               <h2 className="text-lg md:text-2xl font-bold">
                 Connect with language partners worldwide
               </h2>

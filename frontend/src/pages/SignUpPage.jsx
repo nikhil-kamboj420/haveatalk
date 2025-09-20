@@ -34,7 +34,7 @@ const SignUpPage = () => {
         <div className="relative z-50 flex flex-col md:flex-row items-center md:items-start w-full max-w-7xl border-2 border-b-fuchsia-500 bg-black/40 p-6 md:px-5 gap-1  lg:gap-32 rounded-2xl my-4 ">
           {/* Left Side */}
           <div className="flex flex-col justify-start   flex-1 w-full">
-            <div className="brand text-center md:text-left">
+            <div className=" text-center md:text-left">
               <img
                 src="/logo.webp"
                 className="mx-auto md:mx-0  max-w-[15rem] md:max-w-[20rem]"
@@ -49,7 +49,7 @@ const SignUpPage = () => {
             </div>
 
             {/* Form */}
-            <div className="signUpForm-container mt-6 w-full">
+            <div className=" mt-6 w-full">
               <form onSubmit={handleSignup} className="flex flex-col gap-5">
                 {/* Username  */}
                 <div>
@@ -138,14 +138,14 @@ const SignUpPage = () => {
 
           {/* Right Side */}
           <div className="flex flex-col items-center md:items-start justify-center flex-1 w-full  md:mt-0">
-            <div className="img-container-signup">
+            <div>
               <img
                 src="./Conversation-cuate1.webp"
                 alt="Conversation image"
                 className="h-auto max-w-[60vw]  md:max-w-[20vw] mx-auto"
               />
             </div>
-            <div className="ordinary-text mt-6 text-center md:text-left">
+            <div className=" mt-6 text-center md:text-left">
               <h2 className="text-3xl md:text-2xl font-bold">
                 Connect with language partners worldwide
               </h2>

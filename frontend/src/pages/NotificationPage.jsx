@@ -49,7 +49,6 @@ const NotificationPage = () => {
       <link rel="icon" href="/notification-fav-icon.webp" />
       <div className="min-h-screen  lg:mt-[10vh]  xl:mt-[10vh]  max-w-screen  bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]">
         <div
-          id="notificationwrapper"
           className=" md:max-w-[80vw] mx-auto relative  flex flex-col  text-white font-[mori]   md:mt-[10vh] bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]"
         >
           {/* Notification Heading */}

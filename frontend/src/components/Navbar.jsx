@@ -72,7 +72,6 @@ const Navbar = () => {
 
   return (
     <nav
-      id="navbarwrapper"
       className=" blender fixed top-0 z-4 flex w-full items-center justify-between bg-[url('/bg-common.webp')] bg-cover bg-center px-4 sm:px-8 md:px-12 lg:px-18 min-h-[8vh] md:min-h-[10vh] "
     >
       {/* nav - logo */}
@@ -89,7 +88,7 @@ const Navbar = () => {
       {/* nav-links */}
       <div
         ref={shakeRef}
-        className="nav-links flex items-center gap-4 sm:gap-6 md:gap-8 text-white"
+        className=" flex items-center gap-4 sm:gap-6 md:gap-8 text-white"
       >
         {/* notification link */}
         <Link to={"/notification"} className="relative">

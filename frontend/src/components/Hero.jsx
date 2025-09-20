@@ -8,7 +8,7 @@ export default function Hero() {
       opacity: 0,
     });
 
-    const tl = gsap.timeline({ delay: 0.1 });
+    const tl = gsap.timeline({ delay: 1 });
 
     // Sabse pehle Presented by show hoga
     tl.fromTo(
@@ -94,7 +94,7 @@ export default function Hero() {
             </p>
 
             <p
-              className=" textPresentRef opacity-0 text-2xl sm:text-3xl lg:text-4xl text-gray-100 font-[organical]"
+              className=" textPresentRef relative z-[999999]  opacity-0 text-2xl sm:text-3xl lg:text-4xl text-gray-100 font-[organical]"
               style={{ textShadow: "2px 2px 6px rgba(0,0,0,0.75)" }}
             >
               Presented by{" "}
@@ -104,7 +104,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <span className=" font-extrabold font-[dragrace] tracking-widest underline text-white">
+                <span className="  font-extrabold font-[dragrace] tracking-widest underline text-white">
                   Nikhil Kamboj
                 </span>
               </a>

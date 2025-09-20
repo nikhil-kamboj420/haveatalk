@@ -36,7 +36,6 @@ const OnboardingPage = () => {
       <title>OnBoard | HaveaTalk</title>
       <link rel="icon" href="/onboard-fav-icon.webp" />
       <div
-        id="onBoardWrapper"
         className="w-screen h-screen grid place-content-center   bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)] px-4"
       >
         <div className="absolute top-1">
@@ -49,9 +48,9 @@ const OnboardingPage = () => {
             🔙
           </Link>
         </div>
-        <div className="onBoardMainContainer w-full max-w-[90vw] border-2 border-b-fuchsia-500 md:max-w-[80vw] min-h-[70vh] flex flex-col md:flex-row gap-8  rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+        <div className=" w-full max-w-[90vw] border-2 border-b-fuchsia-500 md:max-w-[80vw] min-h-[70vh] flex flex-col md:flex-row gap-8  rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
           {/* Profile Section */}
-          <div className="profileContainer flex flex-col justify-center items-center gap-6 md:w-1/2">
+          <div className=" flex flex-col justify-center items-center gap-6 md:w-1/2">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-[dragrace] tracking-[1rem] text-white text-center">
               Complete Your Profile
             </h1>
@@ -88,7 +87,7 @@ const OnboardingPage = () => {
           </div>
 
           {/* Form Section */}
-          <div className="onBoardForm-container md:w-1/2 flex flex-col justify-center">
+          <div className=" md:w-1/2 flex flex-col justify-center">
             <form
               onSubmit={handleOnboarded}
               className="flex flex-col gap-6 text-white"
@@ -134,7 +133,7 @@ const OnboardingPage = () => {
               </div>
 
               {/* Language Container */}
-              <div className="language-container flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 {/* Native Language */}
                 <div className="flex flex-col flex-1">
                   <label

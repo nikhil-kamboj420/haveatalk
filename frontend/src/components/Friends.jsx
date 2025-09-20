@@ -45,7 +45,6 @@ export const Friends = ({ loadFriends, friends }) => {
 
   return (
     <div
-      id="friendwrapper"
       className="min-h-[40vh] px-4 md:px-10 py-8 max-w-[80vw] my-[8vh] md:my-[10vh] mx-auto bg-[linear-gradient(130deg,rgb(14,9,24)_0%,#6742bc_50%,rgb(14,9,24)_100%)]"
     >
       {/* Friend Title */}
