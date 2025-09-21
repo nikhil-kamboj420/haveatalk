@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project.git"
+    "url": "git+https://github.com/nikhil-kamboj420/haveatalk.git"
   },
   "keywords": [],
   "author": "Nikhil Kamboj",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project/issues"
+    "url": "https://github.com/nikhil-kamboj420/haveatalk/issues"
   },
-  "homepage": "https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project#readme"
+  "homepage": "https://github.com/nikhil-kamboj420/haveatalk#readme"
 }
