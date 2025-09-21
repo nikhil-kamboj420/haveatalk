@@ -1,0 +1,21 @@
+{
+  "name": "haveatalk",
+  "version": "1.0.0",
+  "description": "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)\r [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)\r [![React](https://img.shields.io/badge/React-19+-blue.svg)](https://reactjs.org/)\r [![MongoDB](https://img.shields.io/badge/MongoDB-8+-green.svg)](https://www.mongodb.com/)",
+  "main": "index.js",
+  "scripts": {
+  "build" : "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+  "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project.git"
+  },
+  "keywords": [],
+  "author": "Nikhil Kamboj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project/issues"
+  },
+  "homepage": "https://github.com/nikhil-kamboj420/haveatalk-------MERN-full-stack-Project#readme"
+}
