@@ -19,10 +19,12 @@
 @font-face {
   font-family: "Organical";
   src: url("/fonts/Organical.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Dragrace";
   src: url("/fonts/Dragrace.ttf") format("truetype");
+ font-display: swap;
 }
 
 html {
