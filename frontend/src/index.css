@@ -121,7 +121,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: auto;
+  height: 100vh;
 }
 
 .str-chat__channel-header-title {
@@ -146,16 +146,24 @@ html {
 }
 .str-chat__container {
   width: 100%;
-  height: calc(100vh - 10vh) !important;
-  margin: 2rem auto !important;
+  margin: 3rem auto !important;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
-@media (width > 1024px) {
+@media (width > 767px) {
   .str-chat__container {
-    height: calc(100vh - 14.7vh) !important;
+    height: 90vh !important;
+    position: relative;
+    bottom: 5vh;
+  }
+}
+@media (width > 1023px) {
+  .str-chat__container {
+    height: 90vh !important;
+    position: relative;
+    bottom: 3.2vh;
   }
 }
 .str-chat__list {
@@ -348,11 +356,14 @@ html {
   }
   .str-video__call-controls__button--variant-danger {
     padding: 2rem 2rem !important;
-    position: absolute;
-    top: 70vh;
+    position: fixed !important;
+    top: 85vh !important;
   }
 }
-
+  .str-video__icon--ellipsis {
+    width: 3rem !important;
+    height: 3rem !important;
+}
 .str-video__generic-menu {
   color: #fff;
   background: #010116;

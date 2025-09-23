@@ -79,7 +79,7 @@ const CallPage = () => {
       <title>Call | HaveaTalk</title>
       <link rel="icon" href="/call-fav-icon.webp" />
       <div className="min-h-[100vh] max-w-[100vw] bg-[url('/bg-call.webp')] bg-cover bg-center  m-auto  flex flex-col items-center justify-center">
-        <div className="relative max-w-[80vw]  md:w-[60vw] ">
+        <div className="relative md:max-w-[90vw] xl:w-[100vw]   max-w-[95vw]   ">
           {client && call ? (
             <StreamVideo client={client}>
               <StreamCall call={call}>

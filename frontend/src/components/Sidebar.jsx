@@ -57,7 +57,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
 
       {/* Sidebar */}
       <aside
-        className={`text-2xl font-[dragrace] tracking-[.1rem] fixed top-[11vh] left-0 z-[70] h-[89vh] w-[20rem] font-light
+        className={`text-2xl font-[dragrace] tracking-[.1rem] fixed top-[9vh]  left-0 z-[70] h-[91.5vh] w-[20rem] font-light
         bg-[url('/bg-common.webp')] bg-cover bg-center
         text-white flex flex-col justify-between shadow-lg
         transform transition-transform duration-300 ease-in-out

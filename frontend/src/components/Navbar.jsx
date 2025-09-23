@@ -80,7 +80,7 @@ const Navbar = () => {
           ref={glowRef}
           src="/logo-svg.svg"
           alt="logo"
-          className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32"
+          className="w-25 h-25 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32"
           onClick={() => navigate("/")}
         />
       </div>

@@ -95,7 +95,7 @@ const ChatBot = () => {
         </div>
       )}
       {click && (
-        <div className="fixed z-[999999] bottom-6 right-6 w-full max-w-[28rem] md:max-w-[38rem] bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl flex flex-col p-5 border border-gray-700">
+        <div className="fixed z-[999999] bottom-6 right-14  w-full max-w-[30rem] md:max-w-[38rem] bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl flex flex-col p-5 border border-gray-700">
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
             <p className="text-lg md:text-xl text-white font-semibold flex items-center gap-2">
