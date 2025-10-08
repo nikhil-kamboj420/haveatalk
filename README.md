@@ -116,3 +116,4 @@ This project is licensed under the ISC License.
 - Portfolio: [https://nikhil-kamboj-portfolio.netlify.app](https://nikhil-kamboj-portfolio.netlify.app)
 - GitHub: [https://github.com/nikhil-kamboj420](https://github.com/nikhil-kamboj420)
 - LinkedIn: [https://www.linkedin.com/in/nikhil-kamboj-632a8b350/](https://www.linkedin.com/in/nikhil-kamboj-632a8b350/)
+- HaveaTalk: [https://haveatalk.onrender.com/](https://haveatalk.onrender.com/)
