@@ -25,8 +25,8 @@ const OnboardingPage = () => {
   };
 
   const handleRadomAvatar = () => {
-    const idx = Math.floor(Math.random() * 100) + 1;
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+    const idx = Math.floor(Math.random() * 70) + 1;
+    const randomAvatar = `https://i.pravatar.cc/150?img=${idx}/`;
     setFormState((prev) => ({ ...prev, profilePic: randomAvatar }));
     toast.success("Avatar changed successfully !");
   };
