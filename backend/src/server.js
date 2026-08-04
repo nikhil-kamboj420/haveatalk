@@ -10,7 +10,7 @@ import chatRoutes from "./routes/chatRoute.js";
 import { connectDB } from "./lib/db_conn.js";
 
 const app = express();
-const PORT = process.env.SERVER_PORT || 5000;
+const PORT = process.env.PORT || process.env.SERVER_PORT || 5000;
 const __dirname = path.resolve();
 
 // ✅ Middlewares
@@ -28,6 +28,15 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
+
+// ✅ Health check endpoint
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "OK",
+    message: "HaveATalk API is running",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // ✅ Serve frontend build
 const frontendPath = path.join(__dirname, "../frontend/dist");
